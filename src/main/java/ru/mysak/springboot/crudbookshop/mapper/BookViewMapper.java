@@ -1,29 +1,32 @@
 package ru.mysak.springboot.crudbookshop.mapper;
 
 import org.springframework.stereotype.Component;
-import ru.mysak.springboot.crudbookshop.entity.Author;
 import ru.mysak.springboot.crudbookshop.entity.Book;
-import ru.mysak.springboot.crudbookshop.view.AuthorView;
+import ru.mysak.springboot.crudbookshop.view.AuthorInBookView;
 import ru.mysak.springboot.crudbookshop.view.BookView;
+import ru.mysak.springboot.crudbookshop.view.StorageView;
 
 @Component
 public class BookViewMapper {
 
     public BookView mapToView(Book book) {
-        BookView bookView = new BookView();
-        bookView.setBook_id(book.getBook_id());
-        bookView.setTitle(book.getTitle());
-        bookView.setPublish_year(book.getPublish_year());
-        bookView.setPages(book.getPages());
-        bookView.setPrice(book.getPrice());
-        bookView.setAuthor(new AuthorView(
+        BookView view = new BookView();
+        view.setBook_id(book.getBook_id());
+        view.setTitle(book.getTitle());
+        view.setPublish_year(book.getPublish_year());
+        view.setPages(book.getPages());
+        view.setPrice(book.getPrice());
+        view.setAuthor(new AuthorInBookView(
                 book.getAuthor_id().getAuthor_id(),
                 book.getAuthor_id().getName(),
                 book.getAuthor_id().getSurname()));
-//        bookView.setStorageBook(book.getStorageBook());
-//        bookView.setOrderDetails(book.getOrderDetails());
+        view.setStorage(new StorageView(
+                book.getStorageBook().getBook().getBook_id(),
+                book.getStorageBook().getAmount()
+        ));
+//        view.setOrderDetails(book.getOrderDetails());
 
-        return bookView;
+        return view;
     }
 
 //    public Book mapFromView(BookView bookView) {

@@ -33,6 +33,7 @@ public class BookController {
 
     @PostMapping("/books")
     public Book create(@RequestBody Book newBook) {
+
         return bookService.addBook(newBook);
     }
 

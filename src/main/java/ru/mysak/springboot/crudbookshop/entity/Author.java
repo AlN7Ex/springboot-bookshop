@@ -31,5 +31,5 @@ public class Author {
 
     @OneToMany(mappedBy = "author_id", cascade = CascadeType.ALL)
     @ToString.Exclude
-    private List<Book> book;
+    private List<Book> books;
 }

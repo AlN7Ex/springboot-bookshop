@@ -4,18 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthorView {
+public class BookInAuthorView {
 
-    private Integer author_id;
+    private Integer book_id;
 
-    private String name;
+    private String title;
 
-    private String surname;
+    private String publish_year;
 
-    private List<BookInAuthorView> books;
+    private Integer pages;
+
+    private Integer price;
 }
