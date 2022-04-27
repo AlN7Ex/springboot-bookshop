@@ -14,14 +14,25 @@ public class AuthorViewMapper {
      view.setAuthor_id(author.getAuthor_id());
      view.setName(author.getName());
      view.setSurname(author.getSurname());
-     view.setBooks(author.getBooks().stream()
-             .map(book -> new BookInAuthorView(
-                     book.getBook_id(),
-                     book.getTitle(),
-                     book.getPublish_year(),
-                     book.getPages(),
-                     book.getPrice()))
-             .collect(Collectors.toList()));
+     if (author.getBooks() != null) {
+         view.setBooks(author.getBooks()
+                 .stream()
+                 .map(book -> new BookInAuthorView(
+                         book.getBook_id(),
+                         book.getTitle(),
+                         book.getPublish_year(),
+                         book.getPages(),
+                         book.getPrice()))
+                 .collect(Collectors.toList()));
+     }
+//             (author.getBooks().stream()
+//             .map(book -> new BookInAuthorView(
+//                     book.getBook_id(),
+//                     book.getTitle(),
+//                     book.getPublish_year(),
+//                     book.getPages(),
+//                     book.getPrice()))
+//             .collect(Collectors.toList()));
 
      return view;
     }

@@ -17,9 +17,9 @@ public class BookView {
 
     private AuthorInBookView author;
 
-    public StorageView storage;
+//    public StorageView storage;
 
-    private List<OrderDetails> orderDetails;
+//    private List<OrderDetails> orderDetails;
 
     private String publish_year;
 

@@ -19,11 +19,12 @@ public class BookViewMapper {
         view.setAuthor(new AuthorInBookView(
                 book.getAuthor_id().getAuthor_id(),
                 book.getAuthor_id().getName(),
-                book.getAuthor_id().getSurname()));
-        view.setStorage(new StorageView(
-                book.getStorageBook().getBook().getBook_id(),
-                book.getStorageBook().getAmount()
-        ));
+                book.getAuthor_id().getSurname()
+                ));
+//        view.setStorage(new StorageView(
+//                book.getStorageBook().getBook().getBook_id(),
+//                book.getStorageBook().getAmount()
+//        ));
 //        view.setOrderDetails(book.getOrderDetails());
 
         return view;
