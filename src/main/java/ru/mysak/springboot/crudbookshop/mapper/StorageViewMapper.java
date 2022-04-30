@@ -21,4 +21,9 @@ public class StorageViewMapper {
 
         return view;
     }
+
+//    public StorageBook mapFromView(StorageView view) {
+//        StorageBook storageBook = new StorageBook();
+//        storageBook.
+//    }
 }

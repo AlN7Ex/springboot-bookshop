@@ -23,8 +23,12 @@ public class StorageBookService {
         return storageBookRepository.getStorageById(id);
     }
 
-    public Boolean addBook(StorageBook book) {
-        storageBookRepository.addBook(book);
+    public Boolean addStorageBook(StorageBook book) {
+        storageBookRepository.save(book);
+
         return true;
     }
+//    public Boolean deleteStorageBook(Integer id) {
+//        return storageBookRepository.delete(storageBookRepository.);
+//    }
 }

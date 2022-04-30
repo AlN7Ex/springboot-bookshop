@@ -10,30 +10,28 @@ import java.util.List;
 @Service
 public class BookService {
 
-    private final BookRepository bookRepository;
+    private final BookRepository repository;
 
     public BookService(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
-
-    public List<Book> customFindAllBookByAuthorId(Integer id) {
-        return bookRepository.customFindAllBookByAuthorId(id);
+        this.repository = bookRepository;
     }
 
     public List<Book> getAllBooks() {
-        return bookRepository.getBooks();
+        return repository.getBooks();
     }
 
     public Book addBook(Book book) {
-        return bookRepository.save(book);
+        return repository.save(book);
     }
 
     public Book getBookById(Integer id) {
 
-        return bookRepository.getById(id);
+        return repository.getById(id);
     }
 
-//    public void delete(Integer id) {
-//        bookRepository.deleteById(id);
-//    }
+    public Boolean delete(Integer id) {
+        repository.delete(repository.getById(id));
+
+        return true;
+    }
 }

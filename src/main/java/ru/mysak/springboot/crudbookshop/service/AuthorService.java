@@ -15,7 +15,7 @@ public class AuthorService {
         this.repository = authorRepository;
     }
 
-    public Author newAuthor(Author author) {
+    public Author addAuthor(Author author) {
         return repository.save(author);
     }
 
@@ -25,5 +25,11 @@ public class AuthorService {
 
     public Author getAuthorById(Integer id) {
         return repository.getById(id);
+    }
+
+    public Boolean deleteAuthor(Integer id) {
+        repository.delete(repository.getById(id));
+
+        return true;
     }
 }

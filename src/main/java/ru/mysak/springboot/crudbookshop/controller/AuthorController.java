@@ -1,6 +1,7 @@
 package ru.mysak.springboot.crudbookshop.controller;
 
 import org.springframework.web.bind.annotation.*;
+import ru.mysak.springboot.crudbookshop.entity.Author;
 import ru.mysak.springboot.crudbookshop.mapper.AuthorViewMapper;
 import ru.mysak.springboot.crudbookshop.service.AuthorService;
 import ru.mysak.springboot.crudbookshop.view.AuthorView;
@@ -26,27 +27,20 @@ public class AuthorController {
                 .map(authorViewMapper::mapToView)
                 .collect(Collectors.toList());
     }
-//    @GetMapping("/books")
-//    public List<BookView> readAll() {
-//        return bookService.getAllBooks()
-//                .stream()
-//                .map(bookViewMapper::mapToView)
-//                .collect(Collectors.toList());
-//    }
-//
-//    @PostMapping("/books")
-//    public Book create(@RequestBody Book newBook) {
-//
-//        return bookService.addBook(newBook);
-//    }
+
+    @PostMapping("/authors")
+    public AuthorView create(@RequestBody Author newAuthor) {
+
+        return authorViewMapper.mapToView(authorService.addAuthor(newAuthor));
+    }
 
     @GetMapping("/authors/{id}")
     public AuthorView read(@PathVariable Integer id) {
         return authorViewMapper.mapToView(authorService.getAuthorById(id));
     }
-//    @GetMapping("/books/{id}")
-//    public BookView read(@PathVariable Integer id) {
-//
-//        return bookViewMapper.mapToView(bookService.getBookById(id));
-//    }
+
+    @DeleteMapping("/author/{id}")
+    public Boolean delete(@PathVariable Integer id) {
+        return authorService.deleteAuthor(id);
+    }
 }

@@ -29,9 +29,9 @@ public class BookController {
     }
 
     @PostMapping("/books")
-    public Book create(@RequestBody Book newBook) {
+    public BookView create(@RequestBody Book newBook) {
 
-        return bookService.addBook(newBook);
+        return bookViewMapper.mapToView(bookService.addBook(newBook));
     }
 
     @GetMapping("/books/{id}")
@@ -44,8 +44,8 @@ public class BookController {
 //
 //    }
 
-//    @DeleteMapping("/books/{id}")
-//    public Boolean delete(@PathVariable Integer id) {
-//        return bookService.delete(id);
-//    }
+    @DeleteMapping("/books/{id}")
+    public Boolean delete(@PathVariable Integer id) {
+        return bookService.delete(id);
+    }
 }

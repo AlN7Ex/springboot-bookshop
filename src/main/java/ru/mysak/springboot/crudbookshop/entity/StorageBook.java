@@ -27,5 +27,5 @@ public class StorageBook {
     private Book book;
 
     @Column
-    private int amount = 0;
+    private int amount;
 }
