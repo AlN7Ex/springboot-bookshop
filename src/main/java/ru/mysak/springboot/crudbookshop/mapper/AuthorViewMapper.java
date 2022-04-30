@@ -17,7 +17,7 @@ public class AuthorViewMapper {
      if (author.getBooks() != null) {
          view.setBooks(author.getBooks()
                  .stream()
-                 .map(book -> new BookInAuthorView(
+                 .map(book -> new BookInView(
                          book.getBook_id(),
                          book.getTitle(),
                          book.getPublish_year(),

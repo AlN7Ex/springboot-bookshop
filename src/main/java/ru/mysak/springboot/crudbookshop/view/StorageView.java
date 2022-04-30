@@ -6,13 +6,14 @@ import lombok.NoArgsConstructor;
 import ru.mysak.springboot.crudbookshop.entity.Book;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class StorageView {
 
-    private Integer book_id;
+    private BookInView book;
 
     private int amount;
 }

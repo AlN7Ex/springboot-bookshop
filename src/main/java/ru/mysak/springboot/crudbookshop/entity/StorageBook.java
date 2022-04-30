@@ -26,6 +26,6 @@ public class StorageBook {
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
-    @Column(nullable = false)
-    private int amount;
+    @Column
+    private int amount = 0;
 }

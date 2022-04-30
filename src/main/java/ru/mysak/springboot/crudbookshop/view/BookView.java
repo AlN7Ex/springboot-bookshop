@@ -3,9 +3,6 @@ package ru.mysak.springboot.crudbookshop.view;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.mysak.springboot.crudbookshop.entity.OrderDetails;
-
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -15,7 +12,7 @@ public class BookView {
 
     private String title;
 
-    private AuthorInBookView author;
+    private AuthorInView author;
 
 //    public StorageView storage;
 

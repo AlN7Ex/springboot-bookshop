@@ -1,8 +1,5 @@
 package ru.mysak.springboot.crudbookshop.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.mysak.springboot.crudbookshop.entity.Book;
 import ru.mysak.springboot.crudbookshop.mapper.BookViewMapper;

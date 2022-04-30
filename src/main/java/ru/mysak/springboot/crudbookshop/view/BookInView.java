@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookInAuthorView {
+public class BookInView {
 
     private Integer book_id;
 

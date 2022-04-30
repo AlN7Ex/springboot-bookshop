@@ -2,9 +2,8 @@ package ru.mysak.springboot.crudbookshop.mapper;
 
 import org.springframework.stereotype.Component;
 import ru.mysak.springboot.crudbookshop.entity.Book;
-import ru.mysak.springboot.crudbookshop.view.AuthorInBookView;
+import ru.mysak.springboot.crudbookshop.view.AuthorInView;
 import ru.mysak.springboot.crudbookshop.view.BookView;
-import ru.mysak.springboot.crudbookshop.view.StorageView;
 
 @Component
 public class BookViewMapper {
@@ -16,7 +15,7 @@ public class BookViewMapper {
         view.setPublish_year(book.getPublish_year());
         view.setPages(book.getPages());
         view.setPrice(book.getPrice());
-        view.setAuthor(new AuthorInBookView(
+        view.setAuthor(new AuthorInView(
                 book.getAuthor_id().getAuthor_id(),
                 book.getAuthor_id().getName(),
                 book.getAuthor_id().getSurname()
