@@ -1,8 +1,10 @@
 package ru.mysak.springboot.crudbookshop.mapper;
 
+import org.springframework.stereotype.Component;
 import ru.mysak.springboot.crudbookshop.entity.Customer;
 import ru.mysak.springboot.crudbookshop.view.CustomerView;
 
+@Component
 public class CustomerViewMapper {
 
     public CustomerView mapToView(Customer customer) {

@@ -23,7 +23,7 @@ public class BookService {
 
     @Transactional
     public List<Book> getAllBooks() {
-        return repository.getBooks();
+        return repository.getAllBooks();
     }
 
     @Transactional

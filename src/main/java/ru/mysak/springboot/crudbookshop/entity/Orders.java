@@ -23,11 +23,11 @@ public class Orders {
 
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
-    private Customer customer;
+    private Customer customer_id;
 
     @Column(nullable = false)
     private Integer purchase_amount;
 
-    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "orders_id", cascade = CascadeType.ALL)
     private List<OrderDetails> orderDetails;
 }

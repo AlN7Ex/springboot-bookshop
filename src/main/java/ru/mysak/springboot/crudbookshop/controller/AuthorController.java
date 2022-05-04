@@ -12,35 +12,35 @@ import java.util.stream.Collectors;
 @RestController
 public class AuthorController {
 
-    private final AuthorService authorService;
-    private final AuthorViewMapper authorViewMapper;
+    private final AuthorService service;
+    private final AuthorViewMapper mapper;
 
     public AuthorController(AuthorService authorService, AuthorViewMapper authorViewMapper) {
-        this.authorService = authorService;
-        this.authorViewMapper = authorViewMapper;
+        this.service = authorService;
+        this.mapper = authorViewMapper;
     }
 
     @GetMapping("/authors")
     public List<AuthorView> readAll() {
-        return authorService.getAllAuthors()
+        return service.getAllAuthors()
                 .stream()
-                .map(authorViewMapper::mapToView)
+                .map(mapper::mapToView)
                 .collect(Collectors.toList());
     }
 
     @PostMapping("/authors")
-    public AuthorView create(@RequestBody Author newAuthor) {
+    public AuthorView create(@RequestBody Author author) {
 
-        return authorViewMapper.mapToView(authorService.addAuthor(newAuthor));
+        return mapper.mapToView(service.addAuthor(author));
     }
 
     @GetMapping("/authors/{id}")
     public AuthorView read(@PathVariable Integer id) {
-        return authorViewMapper.mapToView(authorService.getAuthorById(id));
+        return mapper.mapToView(service.getAuthorById(id));
     }
 
-    @DeleteMapping("/author/{id}")
+    @DeleteMapping("/authors/{id}")
     public Boolean delete(@PathVariable Integer id) {
-        return authorService.deleteAuthor(id);
+        return service.deleteAuthor(id);
     }
 }

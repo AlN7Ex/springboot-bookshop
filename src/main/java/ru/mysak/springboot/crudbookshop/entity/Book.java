@@ -43,7 +43,7 @@ public class Book {
     @ToString.Exclude
     private StorageBook storageBook;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "book_id", cascade = CascadeType.ALL)
     @ToString.Exclude
     private List<OrderDetails> orderDetails;
 

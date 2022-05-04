@@ -22,7 +22,7 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer customer_id;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer_id", cascade = CascadeType.ALL)
     private List<Orders> orders;
 
     @Column(nullable = false)

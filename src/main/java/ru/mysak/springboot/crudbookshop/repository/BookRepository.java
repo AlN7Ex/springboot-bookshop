@@ -16,7 +16,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     List<Book> customFindAllBookByAuthorId(Integer id);
 
     @Query(value = "select * from book_shop.book",nativeQuery = true)
-    List<Book> getBooks();
+    List<Book> getAllBooks();
 
 //    @Query(value = "delete from book_shop.book where book_id = ?1",nativeQuery = true)
 //    String deleteBookById(Integer id);

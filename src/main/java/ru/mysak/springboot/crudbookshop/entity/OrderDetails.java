@@ -23,11 +23,11 @@ public class OrderDetails {
 
     @ManyToOne
     @JoinColumn(name = "orders_id")
-    private Orders orders;
+    private Orders orders_id;
 
     @ManyToOne
     @JoinColumn(name = "book_id", nullable = false)
-    private Book book;
+    private Book book_id;
 
     @Column(nullable = false)
     private Integer amount;
