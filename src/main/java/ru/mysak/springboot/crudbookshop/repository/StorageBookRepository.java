@@ -13,8 +13,8 @@ public interface StorageBookRepository extends JpaRepository<StorageBook, Intege
     @Query(value = "select * from book_shop.storage_book", nativeQuery = true)
     List<StorageBook> getAllStorage();
 
-    @Query(value = "select * from book_shop.storage_book where book_id = ?1", nativeQuery = true)
-    StorageBook getStorageById(Integer id);
+//    @Query(value = "select * from book_shop.storage_book where book_id = ?1", nativeQuery = true)
+//    StorageBook getStorageById(Integer id);
 
 //    @Query(value = "update book_shop.storage_book set amount = amount + 1 where book_id = ?1", nativeQuery = true)
 //    StorageBook addBook(StorageBook book);

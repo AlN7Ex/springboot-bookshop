@@ -28,6 +28,9 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer book_id;
 
+    @Version
+    public Long version;
+
     @Column(nullable = false)
     private String title;
 

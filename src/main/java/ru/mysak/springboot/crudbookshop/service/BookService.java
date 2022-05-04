@@ -1,12 +1,17 @@
 package ru.mysak.springboot.crudbookshop.service;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.mysak.springboot.crudbookshop.entity.Book;
 import ru.mysak.springboot.crudbookshop.repository.BookRepository;
 
+import javax.persistence.LockModeType;
+import javax.persistence.OptimisticLockException;
 import java.util.List;
 
-
+@Slf4j
 @Service
 public class BookService {
 
@@ -16,22 +21,38 @@ public class BookService {
         this.repository = bookRepository;
     }
 
+    @Transactional
     public List<Book> getAllBooks() {
         return repository.getBooks();
     }
 
+    @Transactional
     public Book addBook(Book book) {
         return repository.save(book);
     }
 
-    public Book getBookById(Integer id) {
+    @Transactional
+    public Book getBook(Integer id) {
 
         return repository.getById(id);
     }
 
-    public Boolean delete(Integer id) {
+    @Transactional
+    public Boolean deleteBook(Integer id) {
         repository.delete(repository.getById(id));
 
         return true;
+    }
+
+    @Transactional
+    @Lock(value = LockModeType.READ)
+    public Book updateBook(Book book) {
+        try {
+            return repository.save(book);
+        }
+        catch (OptimisticLockException exc) {
+            log.warn("Optimistic lock exception for book {}", book.getBook_id());
+            throw exc;
+        }
     }
 }

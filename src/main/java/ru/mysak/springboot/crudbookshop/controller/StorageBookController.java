@@ -1,7 +1,6 @@
 package ru.mysak.springboot.crudbookshop.controller;
 
 import org.springframework.web.bind.annotation.*;
-import ru.mysak.springboot.crudbookshop.entity.Author;
 import ru.mysak.springboot.crudbookshop.entity.StorageBook;
 import ru.mysak.springboot.crudbookshop.mapper.StorageViewMapper;
 import ru.mysak.springboot.crudbookshop.service.StorageBookService;
@@ -32,17 +31,18 @@ public class StorageBookController {
 
     @GetMapping("/storage/{id}")
     public StorageView read(@PathVariable Integer id) {
-        return storageViewMapper.mapToView(storageBookService.getStorageById(id));
+        return storageViewMapper.mapToView(storageBookService.getBookByIdInStorage(id));
     }
 
     @PostMapping("/storage")
     public Boolean create(@RequestBody StorageBook newStorageBook) {
-        return storageBookService.addStorageBook(newStorageBook);
+        return storageBookService.addBookInStorage(newStorageBook);
     }
 
-//    public Boolean delete(@PathVariable Integer id) {
-//        return storageBookService.delete();
-//    }
+    @DeleteMapping("/storage/{id}")
+    public Boolean delete(@PathVariable Integer id) {
+        return storageBookService.deleteBookInStorage(id);
+    }
 
 //    @PatchMapping("/storage/{id}")
 //    public StorageView update(@PathVariable Integer id) {

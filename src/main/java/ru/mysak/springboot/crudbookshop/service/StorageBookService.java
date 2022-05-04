@@ -9,22 +9,28 @@ import java.util.List;
 @Service
 public class StorageBookService {
 
-    private final StorageBookRepository storageBookRepository;
+    private final StorageBookRepository repository;
 
     public StorageBookService(StorageBookRepository storageBookRepository) {
-        this.storageBookRepository = storageBookRepository;
+        this.repository = storageBookRepository;
     }
 
     public List<StorageBook> getAllStorage() {
-        return storageBookRepository.getAllStorage();
+        return repository.getAllStorage();
     }
 
-    public StorageBook getStorageById(Integer id) {
-        return storageBookRepository.getStorageById(id);
+    public StorageBook getBookByIdInStorage(Integer id) {
+        return repository.getById(id);
     }
 
-    public Boolean addStorageBook(StorageBook book) {
-        storageBookRepository.save(book);
+    public Boolean addBookInStorage(StorageBook book) {
+        repository.save(book);
+
+        return true;
+    }
+
+    public Boolean deleteBookInStorage(Integer id) {
+        repository.delete(repository.getById(id));
 
         return true;
     }
