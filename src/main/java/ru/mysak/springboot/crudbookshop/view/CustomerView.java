@@ -13,7 +13,7 @@ import java.util.List;
 public class CustomerView {
     private Integer customer_id;
 
-    private List<OrdersView> orders;
+    private List<OrdersInView> orders;
 
     private String name;
 
