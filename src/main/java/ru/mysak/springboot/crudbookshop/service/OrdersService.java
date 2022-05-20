@@ -34,6 +34,11 @@ public class OrdersService {
     }
 
     @Transactional
+    public Orders update(Orders orders) {
+        return repository.save(orders);
+    }
+
+    @Transactional
     public Boolean deleteOrders(Integer id) {
         repository.delete(repository.getById(id));
 

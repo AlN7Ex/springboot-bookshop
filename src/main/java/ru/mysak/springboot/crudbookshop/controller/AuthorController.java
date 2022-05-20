@@ -1,5 +1,6 @@
 package ru.mysak.springboot.crudbookshop.controller;
 
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import ru.mysak.springboot.crudbookshop.entity.Author;
 import ru.mysak.springboot.crudbookshop.mapper.AuthorViewMapper;
@@ -20,6 +21,7 @@ public class AuthorController {
         this.mapper = authorViewMapper;
     }
 
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @GetMapping("/authors")
     public List<AuthorView> readAll() {
         return service.getAllAuthors()
@@ -28,17 +30,20 @@ public class AuthorController {
                 .collect(Collectors.toList());
     }
 
+    @Secured("ROLE_ADMIN")
     @PostMapping("/authors")
     public AuthorView create(@RequestBody Author author) {
 
         return mapper.mapToView(service.addAuthor(author));
     }
 
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @GetMapping("/authors/{id}")
     public AuthorView read(@PathVariable Integer id) {
         return mapper.mapToView(service.getAuthorById(id));
     }
 
+    @Secured("ROLE_ADMIN")
     @DeleteMapping("/authors/{id}")
     public Boolean delete(@PathVariable Integer id) {
         return service.deleteAuthor(id);

@@ -37,10 +37,10 @@ public class BookViewMapper {
 //        book.setPages(bookView.getPages());
 //        book.setPrice(bookView.getPrice());
 //        book.setAuthor_id(new Author());
-
+//
 //        book.setAuthor_id(bookView.getAuthor_id());
 //        book.setStorageBook(bookView.getStorageBook());
 //        book.setOrderDetails(bookView.getOrderDetails());
-
+//
 //        return book;
 }

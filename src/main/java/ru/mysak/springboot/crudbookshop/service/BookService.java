@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.mysak.springboot.crudbookshop.entity.Book;
 import ru.mysak.springboot.crudbookshop.repository.BookRepository;
+import ru.mysak.springboot.crudbookshop.view.BookView;
 
 import javax.persistence.LockModeType;
 import javax.persistence.OptimisticLockException;

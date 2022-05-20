@@ -1,43 +1,80 @@
 package ru.mysak.springboot.crudbookshop.user;
 
-import org.springframework.security.core.GrantedAuthority;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
+@Entity
+@Getter
+@Setter
+//@RequiredArgsConstructor
+@NoArgsConstructor
+@Table(schema = "book_shop", name = "users")
 public class User implements UserDetails {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String username;
+
+    private String password;
+
+    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
+    private Set<Role> roles = new LinkedHashSet<>();
+
+//    public Collection<Role> getRoles() {
+//        return roles;
+//    }
+//
+//    public void setRoles(Collection<Role> roles) {
+//        this.roles = roles;
+//    }
+
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+    public Collection<Role> getAuthorities() {
+        return roles;
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
+    @Transient
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
+    @Transient
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
+    @Transient
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
+    @Transient
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
