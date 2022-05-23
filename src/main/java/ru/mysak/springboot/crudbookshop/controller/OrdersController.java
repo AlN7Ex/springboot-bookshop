@@ -4,6 +4,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import ru.mysak.springboot.crudbookshop.entity.Orders;
 import ru.mysak.springboot.crudbookshop.mapper.OrdersViewMapper;
+import ru.mysak.springboot.crudbookshop.mq.MessageSender;
 import ru.mysak.springboot.crudbookshop.service.OrdersService;
 import ru.mysak.springboot.crudbookshop.view.OrdersView;
 
@@ -41,6 +42,7 @@ public class OrdersController {
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @GetMapping("/orders/{id}")
     public OrdersView read(@PathVariable Integer id) {
+
         return ordersViewMapper.mapToView(orderService.getOrders(id));
     }
 
